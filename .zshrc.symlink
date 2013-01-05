@@ -1,0 +1,20 @@
+#
+# Executes commands at the start of an interactive session.
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Disable shared history
+unsetopt SHARE_HISTORY
+
+# Ctrl left / right
+bindkey -M emacs '^[[1;5D' emacs-backward-word
+bindkey -M emacs '^[[1;5C' emacs-forward-word
+
+#Aliases
+alias vom=vim
+
+alias rake="noglob rake"

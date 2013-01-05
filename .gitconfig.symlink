@@ -1,0 +1,18 @@
+[user]
+  name = Ben Scott
+  email = ben@reload.me.uk
+[core]
+  excludesfile = ~/.gitignore_global
+  autocrlf = input
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  ui = true
+[help]
+  autocorrect = 1
+[push]
+  default = upstream
+[merge]
+  defaultToUpstream = true
+
