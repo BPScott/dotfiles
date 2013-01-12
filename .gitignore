@@ -1,5 +1,4 @@
-*.swp
-/.vim.symlink/*
-/sublime/*.cache
-/sublime/Package Control.last-run
+/vim/vim.symlink/bundle/*
+/sublime2/User/*.cache
+/sublime2/User/Package Control.last-run
 

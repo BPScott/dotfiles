@@ -1,26 +1,41 @@
 desc "installs vimfiles"
 task :default => [:setup_symlinks, :bundle_install]
 
-desc "Create Symlinks"
+desc "Hook our dotfiles into system-standard positions."
 task :setup_symlinks do
-  Dir.glob('**/*.symlink', File::FNM_DOTMATCH).each do |linkable|
-    target = File.expand_path(File.join("~", linkable.gsub(".symlink", "")))
+  linkables = Dir.glob('*/**{.symlink}')
+
+  skip_all = false
+  overwrite_all = false
+  backup_all = false
+
+  linkables.each do |linkable|
+    overwrite = false
+    backup = false
+
+    file = linkable.split('/').last.split('.symlink').last
+    target = "#{ENV["HOME"]}/.#{file}"
 
     # Skip if this file already exists as a symlink to the current file
     next if File.exists?(target) && File.ftype(target) == 'link' \
-            && File.identical?(linkable, target)
+      && File.identical?("#{Dir.pwd}/#{linkable}", target)
 
-    if File.exist?(target) || File.symlink?(target)
-      puts "File already exists: #{target}, overwrite? [y]es, [n]o"
-      response = STDIN.gets.chomp.downcase
-      next if response == "n"
-      if response == "y"
-        puts "Overwriting #{target}"
-        FileUtils.rm_rf target
+    if File.exists?(target) || File.symlink?(target)
+      unless skip_all || overwrite_all || backup_all
+        puts "File already exists: #{target}, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all"
+        case STDIN.gets.chomp
+        when 'o' then overwrite = true
+        when 'b' then backup = true
+        when 'O' then overwrite_all = true
+        when 'B' then backup_all = true
+        when 'S' then skip_all = true
+        when 's' then next
+        end
       end
+      FileUtils.rm_rf(target) if overwrite || overwrite_all
+      `mv "$HOME/.#{file}" "$HOME/.#{file}.backup"` if backup || backup_all
     end
-
-    File.symlink File.expand_path(linkable), target
+    `ln -s "$PWD/#{linkable}" "#{target}"` if !skip_all
   end
 end
 
