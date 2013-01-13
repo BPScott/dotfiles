@@ -4,3 +4,6 @@
 [submodule "zsh/zprezto.symlink"]
 	path = zsh/zprezto.symlink
 	url = https://github.com/sorin-ionescu/prezto.git
+[submodule "sublime2/Package Control"]
+	path = sublime2/Package Control
+	url = https://github.com/wbond/sublime_package_control

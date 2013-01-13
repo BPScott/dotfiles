@@ -21,6 +21,7 @@ Install XCode & XCode Developer Tools then run the following:
     cd ~/.dotfiles && rake
     # Link Sublime Config as is OS specific
     ln -s ~/.dotfiles/sublime2/User ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
+    ln -s ~/.dotfiles/sublime2/Package\ Control ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/Package\ Control
     # Make zsh the default shell
     chsh -s /bin/zsh
     # Close and restart your terminal
@@ -35,6 +36,7 @@ Install XCode & XCode Developer Tools then run the following:
     cd ~/.dotfiles && rake
     # Link Sublime Config as is OS specific
     ln -s ~/.dotfiles/sublime2/User ~/.config/sublime-text-2/Packages/User
+    ln -s ~/.dotfiles/sublime2/Package\ Control ~/.config/sublime-text-2/Packages/Package\ Control
     # Make zsh the default shell
     chsh -s /bin/zsh
     # Close and restart your terminal
