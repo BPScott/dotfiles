@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# Bootstrap OSX-only stuff
+
+# Abort if not OSX.
+[[ $(uname -s) = "Darwin" ]] || exit 1
+
+# Install Homebrew.
+if [[ ! "$(type -P brew)" ]]; then
+  echo "Installing Homebrew";
+  true | /usr/bin/ruby -e "$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
+fi
+
+if [[ "$(type -P brew)" ]]; then
+  echo "Updating Homebrew";
+  brew update
+
+  # Install Homebrew recipes.
+  recipes=(git vim optipng pngquant)
+
+  list="$(to_install "${recipes[*]}" "$(brew list)")"
+  if [[ "$list" ]]; then
+    echo "Installing Homebrew recipes: $list";
+    brew install $list
+  fi
+fi
+
+# Link Sublime Config
+echo "Installing Sublime Symlinks";
+ln -s "~/.dotfiles/sublime2/User" "~/Library/Application Support/Sublime Text 2/Packages/User"
+ln -s "~/.dotfiles/sublime2/Package Control" "~/Library/Application Support/Sublime Text 2/Packages/Package Control

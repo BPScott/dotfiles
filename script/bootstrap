@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# Bootstrap entry point
+
+# OSX only
+if [[ "$(uname -s)" = "Darwin" ]]; then
+  script/bootstrap-osx
+fi
+
+# Ubuntu only
+if [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
+  script/bootstrap-ubuntu
+fi
+
+# Rake sets up common symlinks and runs Vundle install
+rake
+
+# ZSH I choose you!
+if [[ "$(which zsh)" != "$SHELL" ]];  then
+  echo "Setting default shell to zsh";
+  echo "You must log out and back in again for this to take effect";
+  chsh -s $(which zsh);
+fi

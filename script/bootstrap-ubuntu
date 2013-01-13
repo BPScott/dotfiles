@@ -1,0 +1,36 @@
+#!/bin/bash
+#
+# Bootstrap Ubuntu-only stuff
+
+# Abort if not Ubuntu.
+[[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]] || exit 1
+
+# Update APT.
+echo "Updating APT";
+sudo apt-get -qq update
+sudo apt-get -qq upgrade
+
+# Install APT packages.
+packages=(
+  build-essential libssl-dev
+  zsh git-core vim optipng pngquant
+)
+
+list=()
+for package in "${packages[@]}"; do
+  if [[ ! "$(dpkg -l "$package" 2>/dev/null | grep "^ii  $package")" ]]; then
+    list=("${list[@]}" "$package")
+  fi
+done
+
+if (( ${#list[@]} > 0 )); then
+  echo "Installing APT packages: ${list[*]}";
+  for package in "${list[@]}"; do
+    sudo apt-get -qq install "$package"
+  done
+fi
+
+# Link Sublime Config
+echo "Installing Sublime Symlinks";
+ln -s "~/.dotfiles/sublime2/User" "~/.config/sublime-text-2/Packages/User"
+ln -s "~/.dotfiles/sublime2/Package Control" "~/.config/sublime-text-2/Packages/Package Control"

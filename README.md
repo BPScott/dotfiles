@@ -5,41 +5,15 @@ These are my dotfiles. There are many like them, but these are mine.
 This is a rough first draft, structure and bootstrapping shall come
 with time.
 
-## Getting Started
+## Install
 
-### OSX
+Run this:
 
-Install XCode & XCode Developer Tools then run the following:
-
-    # Install [HomeBrew](http://mxcl.github.com/homebrew/)
-    ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
-    # Install vim from homebrew
-    brew install vim
-    # Clone this repository
     git clone https://github.com/BPScott/dotfiles.git ~/.dotfiles
-    # Run the setup script to generate common symlinks
-    cd ~/.dotfiles && rake
-    # Link Sublime Config as is OS specific
-    ln -s ~/.dotfiles/sublime2/User ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
-    ln -s ~/.dotfiles/sublime2/Package\ Control ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/Package\ Control
-    # Make zsh the default shell
-    chsh -s /bin/zsh
-    # Close and restart your terminal
+    cd ~/.dotfiles
+    script/bootstrap
 
-### Ubuntu
-
-    # Install zsh, git and vim
-    sudo apt-get install zsh git-core vim
-    # Clone this repository
-    git clone https://github.com/BPScott/dotfiles.git ~/.dotfiles
-    # Run the setup script to generate common symlinks
-    cd ~/.dotfiles && rake
-    # Link Sublime Config as is OS specific
-    ln -s ~/.dotfiles/sublime2/User ~/.config/sublime-text-2/Packages/User
-    ln -s ~/.dotfiles/sublime2/Package\ Control ~/.config/sublime-text-2/Packages/Package\ Control
-    # Make zsh the default shell
-    chsh -s /bin/zsh
-    # Close and restart your terminal
+On OSX XCode Developer Tools must be installed first.
 
 ## Going Further
 
