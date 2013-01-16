@@ -5,6 +5,31 @@
 # Abort if not OSX.
 [[ $(uname -s) = "Darwin" ]] || exit 1
 
+# Given a list of desired items and installed items, return a list
+# of uninstalled items. Arrays in bash are insane (not in a good way).
+function to_install() {
+  local debug desired installed i desired_s installed_s remain
+  if [[ "$1" == 1 ]]; then debug=1; shift; fi
+  # Convert args to arrays, handling both space- and newline-separated lists.
+  read -ra desired < <(echo "$1" | tr '\n' ' ')
+  read -ra installed < <(echo "$2" | tr '\n' ' ')
+  # Sort desired and installed arrays.
+  unset i; while read -r; do desired_s[i++]=$REPLY; done < <(
+    printf "%s\n" "${desired[@]}" | sort
+  )
+  unset i; while read -r; do installed_s[i++]=$REPLY; done < <(
+    printf "%s\n" "${installed[@]}" | sort
+  )
+  # Get the difference. comm is awesome.
+  unset i; while read -r; do remain[i++]=$REPLY; done < <(
+    comm -13 <(printf "%s\n" "${installed_s[@]}") <(printf "%s\n" "${desired_s[@]}")
+  )
+  [[ "$debug" ]] && for v in desired desired_s installed installed_s remain; do
+    echo "$v ($(eval echo "\${#$v[*]}")) $(eval echo "\${$v[*]}")"
+  done
+  echo "${remain[@]}"
+}
+
 # Install Homebrew.
 if [[ ! "$(type -P brew)" ]]; then
   echo "Installing Homebrew";
@@ -16,7 +41,8 @@ if [[ "$(type -P brew)" ]]; then
   brew update
 
   # Install Homebrew recipes.
-  recipes=(git vim optipng pngquant)
+  # Mercurial is a requirement of installing vim
+  recipes=(git mercurial ctags vim optipng pngquant)
 
   list="$(to_install "${recipes[*]}" "$(brew list)")"
   if [[ "$list" ]]; then
@@ -25,7 +51,15 @@ if [[ "$(type -P brew)" ]]; then
   fi
 fi
 
+# Fix path_helper breaking paths
+# See https://github.com/sorin-ionescu/prezto#mac-os-x
+if [["stat -f %p /usr/libexec/path_helper" != '100444']]; then
+  echo "Fix permissions for path_helper";
+  sudo chmod ugo-x /usr/libexec/path_helper
+fi
+
 # Link Sublime Config
 echo "Installing Sublime Symlinks";
-ln -s "~/.dotfiles/sublime2/User" "~/Library/Application Support/Sublime Text 2/Packages/User"
-ln -s "~/.dotfiles/sublime2/Package Control" "~/Library/Application Support/Sublime Text 2/Packages/Package Control
+ln -s ~/.dotfiles/sublime2/User ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
+ln -s ~/.dotfiles/sublime2/Package\ Control ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/Package\ Control
+ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl ~/.dotfiles.symlink/bin/subl
