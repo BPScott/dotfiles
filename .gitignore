@@ -2,3 +2,6 @@
 /sublime2/User/*.cache
 /sublime2/User/Package Control.last-run
 
+# Private, environment Specific
+/zsh/source/bbc*
+
