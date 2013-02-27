@@ -1,16 +1,9 @@
 {
   "syntaxes": [
     {
-      "name": "PHP/SPV",
+      "name": "PHP",
       "rules": [
         {"file_name": ".*\\.spv$"}
-      ]
-    }
-    ,
-    {
-      "name": "Ruby/Puppet",
-      "rules": [
-        {"file_name": ".*\\.pp$"}
       ]
     }
   ]
