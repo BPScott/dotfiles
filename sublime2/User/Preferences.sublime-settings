@@ -5,8 +5,17 @@
 	"draw_white_space": "all",
 	"ensure_newline_at_eof_on_save": true,
 	"find_selected_text": true,
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		".sass-cache",
+		"node_modules"
+	],
 	"font_face": "Monaco",
-	"font_size": 12.0,
+	"font_size": 15.0,
 	"highlight_line": true,
 	"hot_exit": true,
 	"ignored_packages":
@@ -22,12 +31,14 @@
 	"remember_open_files": true,
 	"rulers":
 	[
-		80
+		80,
+		120
 	],
 	"scroll_past_end": false,
 	"shift_tab_unindent": true,
 	"show_full_path": true,
 	"soda_classic_tabs": true,
+	"soda_folder_icons": true,
 	"spell_check": true,
 	"tab_size": 2,
 	"theme": "Soda Dark.sublime-theme",

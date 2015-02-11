@@ -1,8 +1,10 @@
 {
 	"auto_upgrade_last_run": null,
+	"git_binary": "/usr/local/bin/git",
 	"installed_packages":
 	[
 		"ApacheConf.tmLanguage",
+		"AutoWrap",
 		"BracketHighlighter",
 		"CoffeeScript",
 		"Cucumber",
@@ -15,10 +17,10 @@
 		"HTML5",
 		"INI",
 		"LESS",
-		"LoremIpsum",
 		"Modific",
 		"nginx",
 		"Package Control",
+		"PHP-Twig",
 		"Puppet",
 		"SCSS",
 		"SideBarEnhancements",
@@ -27,6 +29,7 @@
 		"SublimeLinter",
 		"Tag",
 		"Theme - Soda",
-		"TrailingSpaces"
+		"TrailingSpaces",
+		"Wrap Plus"
 	]
 }

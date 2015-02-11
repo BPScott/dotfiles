@@ -16,5 +16,7 @@ bindkey -M emacs '^[[1;5C' emacs-forward-word
 
 #Aliases
 alias vom=vim
-
+alias be="bundle exec"
 alias rake="noglob rake"
+
+
