@@ -9,6 +9,7 @@
 .com.apple.timemachine.supported
 
 *.pydevproject
+*.pyc
 .project
 .metadata
 bin/**
