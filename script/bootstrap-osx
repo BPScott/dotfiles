@@ -50,13 +50,6 @@ if [[ "$(type -P brew)" ]]; then
   fi
 fi
 
-# Fix path_helper breaking paths
-# See https://github.com/sorin-ionescu/prezto#mac-os-x
-if [["stat -f %p /usr/libexec/path_helper" != '100444']]; then
-  echo "Fix permissions for path_helper";
-  sudo chmod ugo-x /usr/libexec/path_helper
-fi
-
 # Link Sublime Config
 echo "Installing Sublime Symlinks";
 ln -s ~/.dotfiles/sublime2/User ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
