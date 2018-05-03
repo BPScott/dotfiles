@@ -1,6 +1,9 @@
 #
 # Executes commands at the start of an interactive session.
 #
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -9,10 +12,6 @@ fi
 
 # Disable shared history
 unsetopt SHARE_HISTORY
-
-# Ctrl left / right
-bindkey -M emacs '^[[1;5D' emacs-backward-word
-bindkey -M emacs '^[[1;5C' emacs-forward-word
 
 #Aliases
 alias vom=vim
