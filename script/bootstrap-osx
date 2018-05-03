@@ -41,8 +41,7 @@ if [[ "$(type -P brew)" ]]; then
   brew update
 
   # Install Homebrew recipes.
-  # Mercurial is a requirement of installing vim
-  recipes=(git mercurial ctags vim optipng pngquant)
+  recipes=(git ctags vim optipng pngquant)
 
   list="$(to_install "${recipes[*]}" "$(brew list)")"
   if [[ "$list" ]]; then
