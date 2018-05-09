@@ -4,51 +4,17 @@
   filetype off
   set rtp+=~/.vim/bundle/vundle/
   call vundle#rc()
-  Bundle 'gmarik/vundle'
+  Plugin 'gmarik/vundle'
 " }}}
 
 " color {{{
   set t_Co=256
 
-  " Solarized ----------------------------------
-  " Bundle 'altercation/vim-colors-solarized'
-  " set background=dark
-  " :silent! :colorscheme solarized
-  " Solarized ----------------------------------
-
-  " Tomorrow -----------------------------------
-  " Bundle 'chriskempson/vim-tomorrow-theme'
-  " colorscheme Tomorrow-night
-  " Tomorrow -----------------------------------
-
-  " bclear -------------------------------------
-  " Bundle 'godlygeek/csapprox'
-  " Bundle 'vim-scripts/bclear'
-  " colorscheme bclear
-  " bclear -------------------------------------
-
-  " base16 -------------------------------------
-  " Bundle 'chriskempson/base16-vim'
-  " colorscheme base16-tomorrow
-  " base16 -------------------------------------
-
-  " monokai ------------------------------------
-  Bundle 'sickill/vim-monokai'
-  colorscheme Monokai
-  " monokai ------------------------------------
+  " Plugin 'jsit/disco.vim'
+  " colorscheme disco
 " }}}
 
-Bundle 'ervandew/supertab'
-Bundle 'vim-scripts/draw.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-commentary'
-Bundle 'mileszs/ack.vim'
 Bundle 'Lokaltog/vim-powerline'
-
-" vimux {{{
-  Bundle 'benmills/vimux'
-  let g:VimuxHeight = "40"
-" }}}
 
 " .vimlocal {{{
   "If there's a .vimlocal file automatically source it
@@ -60,36 +26,16 @@ Bundle 'Lokaltog/vim-powerline'
   call SourceVimLocal()
 " }}}
 
-" coffee-script {{{
-  Bundle 'kchmck/vim-coffee-script'
-" }}}
-
 " git {{{
-  Bundle 'mattn/webapi-vim'
-  Bundle 'vim-scripts/Gist.vim'
-  Bundle 'tpope/vim-fugitive'
+  Plugin 'tpope/vim-fugitive'
   let g:github_user = $GITHUB_USER
   let g:github_token = $GITHUB_TOKEN
 " }}}
 
-" markdown {{{
-  Bundle 'tpope/vim-markdown'
-
-  "Allow piping of markdown files to the browser
-  "au BufEnter,BufNew *.md map <enter> :wa\|!rbfu rdiscount % \| bcat<cr>
-" }}}
-
-" cucumber {{{
-  Bundle 'tpope/vim-cucumber'
-" }}}
-
 " tags {{{
-  Bundle 'majutsushi/tagbar'
-  Bundle 'xolox/vim-easytags'
-
-  "Open Tagbar when pressing <leader>b and automatically close it after
-  "selecting something
-  :map <leader>b :TagbarOpenAutoClose<cr>
+  Plugin 'majutsushi/tagbar'
+  Plugin 'xolox/vim-misc'
+  Plugin 'xolox/vim-easytags'
 " }}}
 
 " Jump to last cursor position {{{
@@ -97,25 +43,6 @@ Bundle 'Lokaltog/vim-powerline'
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
-" }}}
-
-" ctrl+p {{{
-  Bundle 'kien/ctrlp.vim'
-
-  "Launch with <leader>t
-  map <leader>t <C-p>
-
-  "Make it a bit bigger
-  let g:ctrlp_max_height = 30
-
-  "Stop CTRL+P from changing directory paths automatically
-  let g:ctrlp_working_path_mode = 0
-
-  "Show hidden files
-  let g:ctrlp_show_hidden = 1
-
-  "Ignore git, subversion and mercurial directories
-  set wildignore+=*/.git/*,*/.hg/*,*/.svn/* 
 " }}}
 
 " looks {{{
@@ -183,18 +110,6 @@ Bundle 'Lokaltog/vim-powerline'
 
   "The number of spaces inserted for a tab
   set shiftwidth=2
-" }}}
-
-"Turn on syntax highlighting for Arduino .pde c files
-autocmd BufRead *.pde set filetype=c
-
-
-" mappings {{{
-  " Clear the search buffer
-  :nnoremap § :nohlsearch<cr>
-
-  " Run last tmux command with \r
-  :map <leader>r :wa\|:RunLastVimTmuxCommand<cr>
 " }}}
 
 " backup to ~/.tmp {{{
