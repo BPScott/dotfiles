@@ -4,6 +4,7 @@
 [core]
   excludesfile = ~/.gitignore_global
   autocrlf = input
+	commitGraph = true
 [color]
   diff = auto
   status = auto
@@ -15,4 +16,13 @@
   default = upstream
 [merge]
   defaultToUpstream = true
-
+[diff]
+	algorithm = patience
+[gc]
+	writeCommitGraph = true
+[protocol]
+	version = 2
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
