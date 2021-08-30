@@ -33,7 +33,7 @@ function to_install() {
 # Install Homebrew.
 if [[ ! "$(type -P brew)" ]]; then
   echo "Installing Homebrew";
-  true | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  true | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 if [[ "$(type -P brew)" ]]; then
