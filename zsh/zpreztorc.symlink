@@ -10,10 +10,16 @@
 #
 
 # Set case-sensitivity for completion, history lookup, etc.
-zstyle ':prezto:*:*' case-sensitive 'no'
+# zstyle ':prezto:*:*' case-sensitive 'yes'
 
 # Color output (auto set to 'no' on dumb terminals).
 zstyle ':prezto:*:*' color 'yes'
+
+# Add additional directories to load prezto modules from
+# zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-contrib
+
+# Allow module overrides when pmodule-dirs causes module name collisions
+# zstyle ':prezto:load' pmodule-allow-overrides 'yes'
 
 # Set the Zsh modules to load (man zshmodules).
 # zstyle ':prezto:load' zmodule 'attr' 'stat'
@@ -41,15 +47,31 @@ zstyle ':prezto:load' pmodule \
   'prompt'
 
 #
+# Autosuggestions
+#
+
+# Set the query found color.
+# zstyle ':prezto:module:autosuggestions:color' found ''
+
+#
+# Completions
+#
+
+# Set the entries to ignore in static '/etc/hosts' for host completion.
+# zstyle ':prezto:module:completion:*:hosts' etc-host-ignores \
+#   '0.0.0.0' '127.0.0.1'
+
+#
 # Editor
 #
 
 # Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':prezto:module:editor' keymap 'emacs'
+zstyle ':prezto:module:editor' key-bindings 'emacs'
 
 # Auto convert .... to ../..
 zstyle ':prezto:module:editor' dot-expansion 'yes'
 
+# Allow the zsh prompt context to be shown.
 zstyle ':prezto:module:editor' ps-context 'yes'
 
 #
@@ -102,6 +124,32 @@ zstyle ':prezto:module:git:status:ignore' submodules 'all'
 # Auto set to 'off' on dumb terminals.
 zstyle ':prezto:module:prompt' theme 'sorin'
 
+# Set the working directory prompt display length.
+# By default, it is set to 'short'. Set it to 'long' (without '~' expansion)
+# for longer or 'full' (with '~' expansion) for even longer prompt display.
+# zstyle ':prezto:module:prompt' pwd-length 'short'
+
+# Set the prompt to display the return code along with an indicator for non-zero
+# return codes. This is not supported by all prompts.
+# zstyle ':prezto:module:prompt' show-return-val 'yes'
+
+#
+# Python
+#
+
+# Auto switch the Python virtualenv on directory change.
+# zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
+
+# Automatically initialize virtualenvwrapper if pre-requisites are met.
+# zstyle ':prezto:module:python:virtualenv' initialize 'yes'
+
+#
+# Ruby
+#
+
+# Auto switch the Ruby version on directory change.
+# zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
+
 #
 # Screen
 #
@@ -132,7 +180,7 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
   'line' \
   'cursor' \
   'root'
-#
+
 # Set syntax highlighting styles.
 # zstyle ':prezto:module:syntax-highlighting' styles \
 #   'builtin' 'bg=blue' \
