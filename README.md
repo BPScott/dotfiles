@@ -20,12 +20,6 @@ On OSX XCode Developer Tools must be installed first.
 
 * Import misc/colorschemes/monokai.itermcolors into iTerm2
 
-### Ubuntu
-
-* Copy XFCE-Terminal color config into its location
-
-        cp ~/.dotfiles/misc/colorschemes/terminalrc ~/.config/Terminal/terminalrc
-
 ## Inspiration / Blatant Copying
 
 [AndrewVos](https://github.com/AndrewVos/vimfiles)
